@@ -1,19 +1,20 @@
 package com.example.bookstore.repository;
 
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.example.bookstore.model.Cart;
 import com.example.bookstore.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface CartRepository extends JpaRepository<Cart, Long> {
 
-    Optional<User> findByEmail(String email);
+    Optional<Cart> findByUser(User user);
 
     @SuppressWarnings("unchecked")
-	User save(User user);
+	Cart save(Cart cart);
 
     void deleteById(Long id);
 
