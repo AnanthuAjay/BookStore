@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.bookstore.exception.NotFoundException;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.repository.BookRepository;
 
@@ -62,6 +63,22 @@ public class BookServiceImpl implements BookService{
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
 		bookRepository.deleteById(id);;
+	}
+
+	@Override
+	public Book updateBook(Long id, Book book) {
+		// TODO Auto-generated method stub
+		Optional<Book> foundBook=bookRepository.findById(id);
+		if(foundBook.isPresent()) {
+			Book existingBook=foundBook.get();
+			existingBook.setId(book.getId());
+			existingBook.setTitle(book.getTitle());
+			existingBook.setAuthor(book.getAuthor());
+			existingBook.setDescription(book.getDescription());
+			return bookRepository.save(existingBook);
+		}else {
+            throw new NotFoundException("Book not found with id " + id);
+        }
 	}
 
 }
