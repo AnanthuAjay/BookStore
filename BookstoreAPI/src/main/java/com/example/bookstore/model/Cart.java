@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.bookstore.repository.CartRepository;
+
 @Entity
 @Table(name = "carts")
 public class Cart {
@@ -24,6 +26,11 @@ public class Cart {
     public Cart(User user) {
         this.user = user;
     }
+
+	public Cart(Long id2) {
+		// TODO Auto-generated constructor stub
+		this.id=id;
+	}
 
 	public Long getId() {
 		return id;
@@ -48,6 +55,13 @@ public class Cart {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public void addItem(Book book, int quantity) {
+	    CartItem cartItem = new CartItem(book, quantity);
+
+	    cartItems.add(cartItem);
+	}
+
 
     
 }
