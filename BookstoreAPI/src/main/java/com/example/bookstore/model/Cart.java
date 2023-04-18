@@ -20,7 +20,6 @@ public class Cart {
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
     public Cart() {}
 
     public Cart(User user) {

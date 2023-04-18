@@ -15,19 +15,25 @@ public class Book {
     private String author;
 
     private String description;
+    
+    private String category;
 
     private double price;
 
-    public Book() {}
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    public Book(String title, String author, String description, double price) {
-        this.title = title;
-        this.author = author;
-        this.description = description;
-        this.price = price;
-    }
-    
-    // getters and setters
+	public Book(Long id, String title, String author, String description, String category, double price) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.description = description;
+		this.category = category;
+		this.price = price;
+	}
 
 	public Long getId() {
 		return id;
@@ -59,6 +65,14 @@ public class Book {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public double getPrice() {
